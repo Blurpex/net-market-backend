@@ -32,7 +32,7 @@ public class Customer {
     private byte[] password;
 
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @Column(name="street_address")
     private String streetAddress;
