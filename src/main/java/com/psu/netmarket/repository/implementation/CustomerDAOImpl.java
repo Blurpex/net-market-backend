@@ -23,13 +23,13 @@ public class CustomerDAOImpl implements CustomerDAO {
     // inserts a customer
     @Override
     @Transactional
-    public void insert(Customer customer) {
+    public void insertCustomer(Customer customer) {
         entityManager.persist(customer);
     }
 
     // returns a customer by the primary key
     @Override
-    public Customer findByUserName(String username) {
+    public Customer findCustomerByUserName(String username) {
         return entityManager.find(Customer.class, username);
     }
 
@@ -53,5 +53,26 @@ public class CustomerDAOImpl implements CustomerDAO {
         );
         query.setParameter("countryParam", country);
         return query.getResultList();
+    }
+
+    // updates a given customer
+    @Override
+    @Transactional
+    public void updateCustomer(Customer customer) {
+        entityManager.merge(customer);
+    }
+
+    // deletes a given customer by their username
+    @Override
+    @Transactional
+    public void deleteCustomer(String userName) {
+        entityManager.remove(findCustomerByUserName(userName));
+    }
+
+    // deletes all customers and returns number of rows deleted
+    @Override
+    @Transactional
+    public int deleteAllCustomer() {
+        return entityManager.createQuery("DELETE FROM Customer").executeUpdate();
     }
 }
