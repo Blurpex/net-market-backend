@@ -24,7 +24,7 @@ CREATE TABLE product
 
 CREATE TABLE order_details
 (
-    id                BIGINT,
+    id                BIGINT AUTO_INCREMENT,
     customer_username VARCHAR(25),
     total             DECIMAL(25, 2) NOT NULL,
     time_ordered      TIMESTAMP,
