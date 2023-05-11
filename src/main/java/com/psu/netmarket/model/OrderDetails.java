@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,18 +19,24 @@ import java.sql.Timestamp;
 @Table(name = "order_details")
 public class OrderDetails {
 
+    // entities
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "customer_username")
-    private String customerUsername;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_username")
+    private Customer customerUsername;
 
     @Column(name = "total", precision = 25, scale = 2, nullable = false)
     private BigDecimal total;
 
     @Column(name = "time_ordered")
     private Timestamp timeOrdered;
+
+    // foreign keys
+    @OneToMany(mappedBy = "orderId")
+    private Set<OrderItems> orderItems = new HashSet<>();
 
 }

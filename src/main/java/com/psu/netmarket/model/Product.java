@@ -1,15 +1,14 @@
 package com.psu.netmarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,6 +18,7 @@ import java.math.BigDecimal;
 @Table(name="product")
 public class Product {
 
+    // entities
     @Id
     @Column(name = "upc")
     private Long upc;
@@ -37,5 +37,9 @@ public class Product {
 
     @Column(name = "inventory", nullable = false)
     private Integer inventory;
+
+    // foreign keys
+    @OneToMany(mappedBy = "productUPC")
+    private Set<OrderItems> orderItems = new HashSet<>();
 
 }

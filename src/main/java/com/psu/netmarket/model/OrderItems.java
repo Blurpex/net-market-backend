@@ -14,15 +14,18 @@ import lombok.Setter;
 @Table(name = "order_items")
 public class OrderItems {
 
+    // entities
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "product_upc")
-    private Long productUPC;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_upc")
+    private Product productUPC;
 
-    @Column(name = "order_id")
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private OrderDetails orderId;
 
 }

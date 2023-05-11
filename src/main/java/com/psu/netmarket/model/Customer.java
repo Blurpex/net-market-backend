@@ -1,13 +1,13 @@
 package com.psu.netmarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,6 +17,7 @@ import lombok.Setter;
 @Table(name="customer")
 public class Customer {
 
+    // entities
     @Id
     @Column(name = "username")
     private String username;
@@ -41,5 +42,9 @@ public class Customer {
 
     @Column(name = "country")
     private String country;
+
+    // foreign keys
+    @OneToMany(mappedBy = "customerUsername")
+    private Set<OrderDetails> orderDetails = new HashSet<>();
 
 }
