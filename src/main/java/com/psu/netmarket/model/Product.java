@@ -40,6 +40,6 @@ public class Product {
 
     // foreign keys
     @OneToMany(mappedBy = "productUPC")
-    private Set<OrderItems> orderItems = new HashSet<>();
+    private Set<OrderItem> orderItems = new HashSet<>();
 
 }

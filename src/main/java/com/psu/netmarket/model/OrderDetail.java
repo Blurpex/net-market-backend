@@ -17,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "order_details")
-public class OrderDetails {
+public class OrderDetail {
 
     // entities
     @Id
@@ -37,6 +37,6 @@ public class OrderDetails {
 
     // foreign keys
     @OneToMany(mappedBy = "orderId")
-    private Set<OrderItems> orderItems = new HashSet<>();
+    private Set<OrderItem> orderItems = new HashSet<>();
 
 }

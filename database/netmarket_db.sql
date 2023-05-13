@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS order_details;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS customer;
+
 CREATE TABLE customer
 (
     username       VARCHAR(25),

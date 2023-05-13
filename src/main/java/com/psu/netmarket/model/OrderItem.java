@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "order_items")
-public class OrderItems {
+public class OrderItem {
 
     // entities
     @Id
@@ -26,6 +26,6 @@ public class OrderItems {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private OrderDetails orderId;
+    private OrderDetail orderId;
 
 }
