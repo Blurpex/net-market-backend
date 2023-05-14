@@ -25,7 +25,7 @@ public class OrderDetail {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_username")
     private Customer customerUsername;
 
