@@ -1,7 +1,6 @@
 package com.psu.netmarket.service.implementation;
 
 import com.psu.netmarket.model.Customer;
-import com.psu.netmarket.repository.CustomerDAO;
 import com.psu.netmarket.service.CustomerService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
