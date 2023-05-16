@@ -5,4 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(path = "orderdetails")
-public interface OrderDetailsRepository extends JpaRepository<OrderDetail, Long> {}
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {}
