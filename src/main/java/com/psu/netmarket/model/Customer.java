@@ -46,4 +46,5 @@ public class Customer {
     // foreign keys
     @OneToMany(mappedBy = "customerUsername")
     private Set<OrderDetail> orderDetails = new HashSet<>();
+
 }
