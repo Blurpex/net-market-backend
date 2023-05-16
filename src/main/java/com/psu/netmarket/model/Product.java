@@ -39,7 +39,7 @@ public class Product {
     private Integer inventory;
 
     // foreign keys
-    @OneToMany(mappedBy = "productUPC")
+    @OneToMany(mappedBy = "productUpc")
     private Set<OrderItem> orderItems = new HashSet<>();
 
 }

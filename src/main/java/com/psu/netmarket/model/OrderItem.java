@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -15,17 +17,21 @@ import lombok.Setter;
 public class OrderItem {
 
     // entities
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+    @EmbeddedId
+    private OrderItemId id;
 
+    @MapsId("productUpc")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_upc")
-    private Product productUPC;
+    @JoinColumn(name = "product_upc", nullable = false)
+    private Product productUpc;
 
+    @MapsId("orderId")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "order_id", nullable = false)
     private OrderDetail orderId;
+
+    @Column(name = "count")
+    private Integer count;
 
 }

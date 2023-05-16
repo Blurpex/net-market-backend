@@ -9,8 +9,8 @@ CREATE TABLE customer
     name           VARCHAR(255),
     email          VARCHAR(255) NOT NULL,
     password       BINARY(32)   NOT NULL,
-    phone_number   BIGINT,
-    street_address TEXT,
+    phone_number   VARCHAR(10),
+    street_address VARCHAR(255),
     city           VARCHAR(255),
     country        CHAR(2),
     PRIMARY KEY (username)
@@ -39,10 +39,10 @@ CREATE TABLE order_details
 
 CREATE TABLE order_items
 (
-    id          BIGINT,
     product_upc BIGINT,
     order_id    BIGINT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (product_upc) REFERENCES product (upc) ON DELETE SET NULL,
+    count       INT CHECK (count > 0),
+    PRIMARY KEY (product_upc, order_id),
+    FOREIGN KEY (product_upc) REFERENCES product (upc),
     FOREIGN KEY (order_id) REFERENCES order_details (id) ON DELETE CASCADE
 );
